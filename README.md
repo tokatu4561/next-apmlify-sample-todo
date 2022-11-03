@@ -30,3 +30,10 @@ Please tell us about your project
 Using default provider  awscloudformation
 ? Select the authentication method you want to use: AWS profile // <- 自身の環境に合わせて調整
 ```
+
+```bash
+$ amplify add hosting
+? Select the plugin module to execute Hosting with Amplify Console (Managed hosting with custom domains, Continuous deployment) //Amplifyが作るものを利用する
+? Choose a type Continuous deployment (Git-based deployments)
+? Continuous deployment is configured in the Amplify Console. Please hit enter once you connect your repository
+```
