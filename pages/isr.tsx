@@ -5,6 +5,22 @@ import { GetStaticProps } from 'next'
 type Props = { timestamp: number }
 
 export default function ISR(props: Props) {
+  // const [authState, setAuthState] = React.useState();
+  // const [user, setUser] = React.useState();
+
+  // React.useEffect(() => {
+  //     return onAuthUIStateChange((nextAuthState, authData) => {
+  //         setAuthState(nextAuthState);
+  //         setUser(authData)
+  //     });
+  // }, []);
+
+  // AuthState.SignedIn && user ? (
+  //   <div className="App">
+  //       <div>Hello, {user.username}</div>
+  //       <AmplifySignOut />
+  //   </div>
+
   return (
     <div className={styles.container}>
       <Head>
