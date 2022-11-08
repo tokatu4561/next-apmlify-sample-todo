@@ -15,11 +15,6 @@ interface ITask {
 type Props = { tasks: ITask[] }
 
 Amplify.configure({
-    // Auth: {
-    //   region: 'ap-northeast-1',
-    //   userPoolId: 'ap-northeast-1_xxxxxxxxxx',
-    //   userPoolWebClientId: 'xxxxxxxxxxxxxxxx',
-    // },
     API: {
       endpoints: [
         {
