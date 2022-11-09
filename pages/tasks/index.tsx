@@ -28,7 +28,7 @@ export default function Tasks(props: Props) {
   return (
       <MainLayout title='タスク一覧'>
         <main className="flex justify-center items-center min-h-screen text-gray-600">
-          <div>
+          <div className='w-2/4'>
             <h1 className="font-bold">SSRしてます</h1>
             <TaskList fetchedTaskList={tasks}/>
           </div>

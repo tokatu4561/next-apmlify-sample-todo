@@ -52,7 +52,7 @@ export const TaskList: FC<Props> = ({ fetchedTaskList = [] }) => {
 
   return (
     <>
-      <form className='mb-2' onSubmit={handleSubmit(onSubmit)}>
+      <form className='mb-2 flex items-center' onSubmit={handleSubmit(onSubmit)}>
           <InputFiled inputId='add-todo' label='Add task' type="text" placeholder='テスト' {...register('taskTitle', { required: true })}/>
           {errors.taskTitle && (
             <span className="text-red-500">入力は必須です。</span>
