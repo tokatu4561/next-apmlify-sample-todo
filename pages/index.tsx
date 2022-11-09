@@ -7,9 +7,9 @@ import { MainLayout } from '../src/components/Layout/MainLayout'
 const Home: NextPage = () => {
   return (
     <MainLayout title="ホーム">
-        <Link href={'/isr'}>
-          <a>isr動作確認ページへ</a>
-        </Link>     
+      <Link href={'/isr'}>
+        <a>isr動作確認ページへ</a>
+      </Link>
     </MainLayout>
   )
 }

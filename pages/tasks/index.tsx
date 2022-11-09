@@ -4,14 +4,9 @@ import { GetServerSideProps, GetStaticProps } from 'next'
 import { Amplify, withSSRContext } from 'aws-amplify'
 import { responseSymbol } from 'next/dist/server/web/spec-compliant/fetch-event'
 import { MainLayout } from '../../src/components/Layout/MainLayout'
-
-interface ITask {
-    id: string
-    userId: number
-    title: string
-    createdAt: string
-    updatedAt: string
-}
+import { InputFiled } from '../../src/components/Form/InputFiled'
+import { ITask } from '../../src/features/task/types'
+import { TaskList } from '../../src/features/task/components/TaskList'
 
 type Props = { tasks: ITask[] }
 
@@ -32,12 +27,12 @@ export default function Tasks(props: Props) {
 
   return (
       <MainLayout title='タスク一覧'>
-        <h1>SSRページ</h1>
-        {
-            tasks.map(task => (
-                <p>{task.id}: {task.title} : {task.createdAt}</p>
-            ))
-        }
+        <main className="flex justify-center items-center min-h-screen text-gray-600">
+          <div>
+            <h1 className="font-bold">SSRしてます</h1>
+            <TaskList fetchedTaskList={tasks}/>
+          </div>
+        </main>
       </MainLayout>
   )
 }
