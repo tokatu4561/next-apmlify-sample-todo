@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 import { Button } from '../../../components/Button'
 import { InputFiled } from '../../../components/Form/InputFiled'
 import { ITask } from '../types'
+import { Task } from './Task'
 
 interface Props {
   fetchedTaskList: ITask[]
@@ -59,13 +60,11 @@ export const TaskList: FC<Props> = ({ fetchedTaskList = [] }) => {
           <Button type='submit'>Add</Button>
       </form>
       <ul>
-      {taskList.map((task: ITask, i: number) => {
-        return (
-          <li className="p-2 mb-2 bg-white rounded" key={`${task.title}_${i}`}>
-            {task.title}
-          </li>
-        )
-      })}
+        {taskList.map((task: ITask, i: number) => {
+          return (
+            <Task task={task} key={task.id} setTaskList={setTaskList}/>
+          )
+        })}
       </ul>
     </>
     
