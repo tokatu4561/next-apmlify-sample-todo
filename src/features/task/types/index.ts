@@ -2,6 +2,6 @@ export interface ITask {
   id: string
   userId: number
   title: string
-  createdAt: string
-  updatedAt: string
+  created_at: string
+  updated_at: string
 }
