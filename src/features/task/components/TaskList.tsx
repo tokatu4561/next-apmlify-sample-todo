@@ -35,38 +35,41 @@ export const TaskList: FC<Props> = ({ fetchedTaskList = [] }) => {
 
     const { task: newTask } = await API.post('dev', '/task', {
       headers: {
-        ContentType: "application/json",
+        ContentType: 'application/json',
       },
       body: {
-        task: taskData
+        task: taskData,
       },
-    });
+    })
 
-    setTaskList(prevTasks => {
-      return [
-        ...prevTasks,
-        newTask
-      ]
+    setTaskList((prevTasks) => {
+      return [...prevTasks, newTask]
     })
   }
 
   return (
     <>
-      <form className='mb-2 flex items-center' onSubmit={handleSubmit(onSubmit)}>
-          <InputFiled inputId='add-todo' label='Add task' type="text" placeholder='テスト' {...register('taskTitle', { required: true })}/>
-          {errors.taskTitle && (
-            <span className="text-red-500">入力は必須です。</span>
-          )}
-          <Button type='submit'>Add</Button>
+      <form
+        className="mb-2 flex items-center"
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <InputFiled
+          inputId="add-todo"
+          label="Add task"
+          type="text"
+          placeholder="テスト"
+          {...register('taskTitle', { required: true })}
+        />
+        {errors.taskTitle && (
+          <span className="text-red-500">入力は必須です。</span>
+        )}
+        <Button type="submit">Add</Button>
       </form>
       <ul>
         {taskList.map((task: ITask, i: number) => {
-          return (
-            <Task task={task} key={task.id} setTaskList={setTaskList}/>
-          )
+          return <Task task={task} key={task.id} setTaskList={setTaskList} />
         })}
       </ul>
     </>
-    
   )
 }

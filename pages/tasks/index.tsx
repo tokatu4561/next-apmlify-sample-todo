@@ -11,46 +11,47 @@ import { TaskList } from '../../src/features/task/components/TaskList'
 type Props = { tasks: ITask[] }
 
 Amplify.configure({
-    API: {
-      endpoints: [
-        {
-          name: 'dev',
-          endpoint:
-            'http://127.0.0.1:9000',
-        },
-      ],
-    },
-  });
+  API: {
+    endpoints: [
+      {
+        name: 'dev',
+        endpoint: 'http://127.0.0.1:9000',
+      },
+    ],
+  },
+})
 
 export default function Tasks(props: Props) {
-  const {tasks} = props
+  const { tasks } = props
 
   return (
-      <MainLayout title='タスク一覧'>
-        <main className="flex justify-center items-center min-h-screen text-gray-600">
-          <div className='w-2/4'>
-            <h1 className="font-bold">SSRしてます</h1>
-            <TaskList fetchedTaskList={tasks}/>
-          </div>
-        </main>
-      </MainLayout>
+    <MainLayout title="タスク一覧">
+      <main className="flex justify-center items-center min-h-screen text-gray-600">
+        <div className="w-2/4">
+          <h1 className="font-bold">SSRしてます</h1>
+          <TaskList fetchedTaskList={tasks} />
+        </div>
+      </main>
+    </MainLayout>
   )
 }
 
-export const getServerSideProps: GetServerSideProps<Props> = async context => {
-    const { API } = withSSRContext(context);
+export const getServerSideProps: GetServerSideProps<Props> = async (
+  context
+) => {
+  const { API } = withSSRContext(context)
 
-    let tasks = []
-    try {
-       const response = await API.get('dev', '/tasks');
-       tasks = response.tasks
-    } catch (err) {
-        console.log('error fetching', err);
-    }
+  let tasks = []
+  try {
+    const response = await API.get('dev', '/tasks')
+    tasks = response.tasks
+  } catch (err) {
+    console.log('error fetching', err)
+  }
 
   return {
     props: {
-        tasks: tasks
+      tasks: tasks,
     },
   }
 }

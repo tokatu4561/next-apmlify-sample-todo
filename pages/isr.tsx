@@ -32,7 +32,7 @@ export default function ISR(props: Props) {
   )
 }
 
-export const getStaticProps: GetStaticProps<Props> = async context => {
+export const getStaticProps: GetStaticProps<Props> = async (context) => {
   return {
     props: {
       timestamp: new Date().getTime(),
