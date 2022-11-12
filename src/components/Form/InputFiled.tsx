@@ -28,3 +28,5 @@ export const InputFiled: FC<Props> = React.forwardRef(
     )
   }
 )
+
+InputFiled.displayName = 'InputFiled'

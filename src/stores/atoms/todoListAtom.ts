@@ -1,7 +1,7 @@
-import { Todo } from '@/features/todo/types'
 import { atom } from 'recoil'
+import { ITask } from '../../features/task/types'
 
-export const todoListState = atom<Todo[]>({
+export const todoListState = atom<ITask[]>({
   key: 'todoList',
-  default: [{ title: 'one' }, { title: 'two' }],
+  default: [],
 })

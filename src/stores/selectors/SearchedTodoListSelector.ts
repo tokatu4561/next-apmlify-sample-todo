@@ -1,12 +1,12 @@
-import { Todo } from '@/features/todo/types'
 import { selector } from 'recoil'
+import { ITask } from '../../features/task/types'
 import { todoListState } from '../atoms/todoListAtom'
 import { searchTextFormState } from '../atoms/todoTitleFormAtom'
 
-export const searchedTodoListSelector = selector<Todo[]>({
+export const searchedTodoListSelector = selector<ITask[]>({
   key: 'searchedTodoListSelector',
   get: ({ get }) => {
-    const todoList: Todo[] = get(todoListState)
+    const todoList: ITask[] = get(todoListState)
 
     const searchText: string = get(searchTextFormState)
 
