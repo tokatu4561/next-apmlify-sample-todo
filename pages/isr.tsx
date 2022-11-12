@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import { MainLayout } from '../src/components/Layout/MainLayout'
 import dayjs from 'dayjs'

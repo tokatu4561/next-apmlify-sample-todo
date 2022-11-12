@@ -1,10 +1,6 @@
-import Head from 'next/head'
-import styles from '../../styles/Home.module.css'
 import { GetServerSideProps, GetStaticProps } from 'next'
 import { Amplify, withSSRContext } from 'aws-amplify'
-import { responseSymbol } from 'next/dist/server/web/spec-compliant/fetch-event'
 import { MainLayout } from '../../src/components/Layout/MainLayout'
-import { InputFiled } from '../../src/components/Form/InputFiled'
 import { ITask } from '../../src/features/task/types'
 import { TaskList } from '../../src/features/task/components/TaskList'
 
