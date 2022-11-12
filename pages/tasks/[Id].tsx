@@ -6,6 +6,7 @@ import { ParsedUrlQuery } from 'querystring'
 import { Button } from '../../src/components/Button'
 import { TrashIcon } from '@heroicons/react/solid'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 interface TaskPageParams extends ParsedUrlQuery {
   id: string
@@ -16,6 +17,26 @@ interface TaskDetailPageProps {
 }
 
 const TaskDetailPage: NextPage<TaskDetailPageProps> = ({ task }) => {
+  const router = useRouter()
+  const handleDeleteTask = async () => {
+    try {
+      await API.del('dev', '/task', {
+        headers: {
+          ContentType: 'application/json',
+        },
+        body: {
+          task: {
+            id: task.id,
+            user_id: task.user_id,
+            title: task.title,
+          },
+        },
+      })
+      router.push('/tasks')
+    } catch (error) {
+      alert('failed delete')
+    }
+  }
   return (
     <MainLayout title={`task detail ${task.title}`}>
       <main className="flex justify-center items-center text-gray-600">
@@ -27,7 +48,11 @@ const TaskDetailPage: NextPage<TaskDetailPageProps> = ({ task }) => {
           <p>CreatedAt:{task.created_at}</p>
           <p>UpdatedAt:{task.updated_at}</p>
 
-          <Button type="button" className="bg-red-400 hover:bg-red-700">
+          <Button
+            onClick={handleDeleteTask}
+            type="button"
+            className="bg-red-400 hover:bg-red-700"
+          >
             Delete
             <TrashIcon />
           </Button>
