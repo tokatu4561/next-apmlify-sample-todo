@@ -12,6 +12,8 @@
     "@aws-amplify/ui-react": "^3.5.11",
     "@heroicons/react": "^1.0.1",
     "aws-amplify": "^4.3.43",
+    "date-fns": "^2.29.3",
+    "dayjs": "^1.11.6",
     "next": "12.1.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
