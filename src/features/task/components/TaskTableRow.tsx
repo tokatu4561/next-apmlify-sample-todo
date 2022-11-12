@@ -15,7 +15,7 @@ interface Props {
   setTaskList: React.Dispatch<React.SetStateAction<ITask[]>>
 }
 
-export const Task: FC<Props> = ({ task, setTaskList }) => {
+export const TaskTableRow: FC<Props> = ({ task, setTaskList }) => {
   const [isEditing, setIsEditing] = useState(false)
   const [taskTitle, setTaskTitle] = useState(task.title)
 
@@ -48,7 +48,10 @@ export const Task: FC<Props> = ({ task, setTaskList }) => {
   }
 
   return (
-    <tr className="p-2 mb-2 rounded bg-gray-200" key={task.id}>
+    <tr
+      className="p-2 mb-2 rounded odd:bg-white even:bg-gray-100"
+      key={task.id}
+    >
       <td className="px-6 py-4 text-sm font-medium text-gray-900 whitespace-nowrap">
         {isEditing ? (
           <input

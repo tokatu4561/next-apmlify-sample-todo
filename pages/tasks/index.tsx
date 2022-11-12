@@ -26,10 +26,12 @@ export default function Tasks(props: Props) {
 
   return (
     <MainLayout title="タスク一覧">
-      <main className="pt-16 flex justify-center items-center h-screen text-gray-600 overflow-y-auto">
-        <div className="w-2/4">
-          <h1 className="font-bold text-center mb-12">SSRしてます</h1>
-          <TaskList fetchedTaskList={tasks} />
+      <main className="flex justify-center items-center text-gray-600">
+        <div className="w-2/4 py-6">
+          <div>
+            <h1 className="font-bold text-center mb-12">SSRしてます</h1>
+            <TaskList fetchedTaskList={tasks} />
+          </div>
         </div>
       </main>
     </MainLayout>

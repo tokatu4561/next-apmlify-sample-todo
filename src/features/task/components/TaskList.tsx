@@ -1,32 +1,18 @@
 import { API } from 'aws-amplify'
-import { time } from 'console'
+
 import React, { FC, useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { Button } from '../../../components/Button'
-import { InputFiled } from '../../../components/Form/InputFiled'
 import { ITask } from '../types'
-import { Task } from './Task'
+import CreateTaskForm, { CreateTaskInputs } from './CreateTaskForm'
+import { TaskTableRow } from './TaskTableRow'
 
 interface Props {
   fetchedTaskList: ITask[]
 }
 
-type Inputs = {
-  taskTitle: string
-}
-
 export const TaskList: FC<Props> = ({ fetchedTaskList = [] }) => {
   const [taskList, setTaskList] = useState<ITask[]>(fetchedTaskList)
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<Inputs>({
-    mode: 'onChange',
-  })
-
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (data: CreateTaskInputs) => {
     const { taskTitle } = data
     const taskData = {
       userId: 1,
@@ -49,24 +35,9 @@ export const TaskList: FC<Props> = ({ fetchedTaskList = [] }) => {
 
   return (
     <>
-      <form
-        className="mb-2 flex items-center flex-col"
-        onSubmit={handleSubmit(onSubmit)}
-      >
-        <InputFiled
-          inputId="add-todo"
-          label="Add task"
-          type="text"
-          placeholder="テスト"
-          {...register('taskTitle', { required: true })}
-        />
-        {errors.taskTitle && (
-          <span className="text-red-500">入力は必須です。</span>
-        )}
-        <Button type="submit">Create</Button>
-      </form>
+      <CreateTaskForm onSubmit={onSubmit} />
 
-      <h2 className="mb-4">TaskList</h2>
+      <h2 className="text-2xl mb-4">TaskList</h2>
 
       <table className="min-w-full divide-y divide-gray-200">
         <thead className="bg-gray-50">
@@ -87,7 +58,7 @@ export const TaskList: FC<Props> = ({ fetchedTaskList = [] }) => {
         </thead>
         <tbody>
           {taskList.map((task: ITask, i: number) => (
-            <Task task={task} setTaskList={setTaskList} key={task.id} />
+            <TaskTableRow task={task} setTaskList={setTaskList} key={task.id} />
           ))}
         </tbody>
       </table>
