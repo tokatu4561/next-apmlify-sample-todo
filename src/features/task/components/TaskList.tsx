@@ -50,7 +50,7 @@ export const TaskList: FC<Props> = ({ fetchedTaskList = [] }) => {
   return (
     <>
       <form
-        className="mb-2 flex items-center"
+        className="mb-2 flex items-center flex-col"
         onSubmit={handleSubmit(onSubmit)}
       >
         <InputFiled
@@ -63,13 +63,34 @@ export const TaskList: FC<Props> = ({ fetchedTaskList = [] }) => {
         {errors.taskTitle && (
           <span className="text-red-500">入力は必須です。</span>
         )}
-        <Button type="submit">Add</Button>
+        <Button type="submit">Create</Button>
       </form>
-      <ul>
-        {taskList.map((task: ITask, i: number) => {
-          return <Task task={task} key={task.id} setTaskList={setTaskList} />
-        })}
-      </ul>
+
+      <h2 className="mb-4">TaskList</h2>
+
+      <table className="min-w-full divide-y divide-gray-200">
+        <thead className="bg-gray-50">
+          <tr>
+            <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500">
+              Title
+            </th>
+            <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500">
+              CreatedAt
+            </th>
+            <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500">
+              Edit
+            </th>
+            <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500">
+              Detail
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {taskList.map((task: ITask, i: number) => (
+            <Task task={task} setTaskList={setTaskList} key={task.id} />
+          ))}
+        </tbody>
+      </table>
     </>
   )
 }

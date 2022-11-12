@@ -4,9 +4,11 @@ import {
   PauseIcon,
   PencilIcon,
   ArrowCircleUpIcon,
+  ArrowRightIcon,
 } from '@heroicons/react/solid'
 import { API } from 'aws-amplify'
-import { TaskList } from './TaskList'
+import Link from 'next/link'
+import { dateFormat } from '../../../lib/utils'
 
 interface Props {
   task: ITask
@@ -46,46 +48,63 @@ export const Task: FC<Props> = ({ task, setTaskList }) => {
   }
 
   return (
-    <li className="flex items-center p-2 mb-2 rounded">
-      <div className="flex-1">
+    <tr className="p-2 mb-2 rounded bg-gray-200" key={task.id}>
+      <td className="px-6 py-4 text-sm font-medium text-gray-900 whitespace-nowrap">
         {isEditing ? (
           <input
-            className="flex-1 shadow border rounded w-full py-2 px-3 text-gray-700"
+            className="shadow border rounded w-full py-2 px-3 text-gray-700"
             type="text"
             onChange={(e) => setTaskTitle(e.target.value)}
             value={taskTitle}
           />
         ) : (
-          <div>
-            <p>{taskTitle}</p>
-            <span>{task.created_at}</span>
-          </div>
+          <p>{taskTitle}</p>
         )}
-      </div>
+      </td>
 
-      {isEditing ? (
-        <>
-          <div
-            onClick={handleUpdateTask}
-            className="p-2 w-12 hover:bg-indigo-50 cursor-pointer rounded-full"
-          >
-            <ArrowCircleUpIcon />
-          </div>
-          <div
-            onClick={() => setIsEditing(false)}
-            className="p-2 w-12 hover:bg-indigo-50 cursor-pointer rounded-full"
-          >
-            <PauseIcon />
-          </div>
-        </>
-      ) : (
-        <div
-          onClick={() => setIsEditing(true)}
-          className="p-2 w-12 hover:bg-indigo-50 cursor-pointer rounded-full"
-        >
-          <PencilIcon />
+      <td className="px-6 py-4 text-sm font-medium text-gray-900 whitespace-nowrap">
+        {dateFormat(task.created_at)}
+      </td>
+
+      <td className="px-6 py-4 text-sm font-medium text-gray-900 whitespace-nowrap">
+        <div className="flex">
+          {isEditing ? (
+            <>
+              <div
+                onClick={() => setIsEditing(false)}
+                className="p-2 w-12 hover:bg-indigo-50 cursor-pointer rounded-full"
+              >
+                <PauseIcon />
+              </div>
+              <div
+                onClick={handleUpdateTask}
+                className="p-2 w-12 hover:bg-indigo-50 cursor-pointer rounded-full"
+              >
+                <ArrowCircleUpIcon />
+              </div>
+            </>
+          ) : (
+            <>
+              <div
+                onClick={() => setIsEditing(true)}
+                className="p-2 w-12 hover:bg-indigo-50 cursor-pointer rounded-full"
+              >
+                <PencilIcon />
+              </div>
+            </>
+          )}
         </div>
-      )}
-    </li>
+      </td>
+
+      <td className="px-6 py-4 text-sm text-gray-900 whitespace-nowrap">
+        <div className="flex">
+          <Link href={`task/${task.id}`}>
+            <a className="p-2 w-12 hover:bg-indigo-50 cursor-pointer rounded-full">
+              <ArrowRightIcon />
+            </a>
+          </Link>
+        </div>
+      </td>
+    </tr>
   )
 }
