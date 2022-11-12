@@ -101,7 +101,7 @@ export const TaskTableRow: FC<Props> = ({ task, setTaskList }) => {
 
       <td className="px-6 py-4 text-sm text-gray-900 whitespace-nowrap">
         <div className="flex">
-          <Link href={`task/${task.id}`}>
+          <Link passHref href={`tasks/${task.id}`}>
             <a className="p-2 w-12 hover:bg-indigo-50 cursor-pointer rounded-full">
               <ArrowRightIcon />
             </a>
