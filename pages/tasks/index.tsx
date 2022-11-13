@@ -6,6 +6,7 @@ import { TaskList } from '../../src/features/task/components/TaskList'
 
 type Props = { tasks: ITask[] }
 
+// FIXME:環境変数を整理したい
 Amplify.configure({
   API: {
     endpoints: [
