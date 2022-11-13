@@ -22,7 +22,7 @@ export const TaskTableRow: FC<Props> = ({ task, setTaskList }) => {
   const handleUpdateTask = async () => {
     const taskData = {
       id: task.id,
-      userId: 1,
+      user_id: 1,
       title: taskTitle,
     }
 

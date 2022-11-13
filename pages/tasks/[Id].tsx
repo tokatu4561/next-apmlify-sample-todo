@@ -82,6 +82,8 @@ export const getStaticProps: GetStaticProps<
     const response = await API.get('amplify-testing', `/tasks/${id}`, {})
     const task = response.task
 
+    console.log('get task', task)
+
     return {
       props: {
         task: task,
