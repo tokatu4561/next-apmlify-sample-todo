@@ -10,8 +10,9 @@ Amplify.configure({
   API: {
     endpoints: [
       {
-        name: 'dev',
-        endpoint: 'http://127.0.0.1:9000',
+        name: 'amplify-testing',
+        endpoint:
+          'https://2shf04a5z7.execute-api.ap-northeast-1.amazonaws.com/Prod',
       },
     ],
   },
