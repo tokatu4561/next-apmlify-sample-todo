@@ -11,8 +11,7 @@ Amplify.configure({
     endpoints: [
       {
         name: 'amplify-testing',
-        endpoint:
-          'https://2shf04a5z7.execute-api.ap-northeast-1.amazonaws.com/Prod',
+        endpoint: 'https://6qd6z7hbm3.execute-api.ap-northeast-1.amazonaws.com',
       },
     ],
   },
