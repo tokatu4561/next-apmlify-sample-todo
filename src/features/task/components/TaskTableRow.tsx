@@ -26,7 +26,7 @@ export const TaskTableRow: FC<Props> = ({ task, setTaskList }) => {
       title: taskTitle,
     }
 
-    await API.put('dev', '/task', {
+    await API.put('amplify-testing', '/task', {
       headers: {
         ContentType: 'application/json',
       },

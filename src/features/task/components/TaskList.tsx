@@ -19,7 +19,7 @@ export const TaskList: FC<Props> = ({ fetchedTaskList = [] }) => {
       title: taskTitle,
     }
 
-    const { task: newTask } = await API.post('dev', '/task', {
+    const { task: newTask } = await API.post('amplify-testing', '/task', {
       headers: {
         ContentType: 'application/json',
       },

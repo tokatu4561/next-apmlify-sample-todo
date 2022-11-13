@@ -42,7 +42,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
 
   let tasks = []
   try {
-    const response = await API.get('dev', '/tasks')
+    const response = await API.get('amplify-testing', '/tasks')
     tasks = response.tasks
   } catch (err) {
     console.log('error fetching', err)

@@ -20,7 +20,7 @@ const TaskDetailPage: NextPage<TaskDetailPageProps> = ({ task }) => {
   const router = useRouter()
   const handleDeleteTask = async () => {
     try {
-      await API.del('dev', '/task', {
+      await API.del('amplify-testing', '/task', {
         headers: {
           ContentType: 'application/json',
         },
@@ -79,7 +79,7 @@ export const getStaticProps: GetStaticProps<
   const id = context.params?.Id
 
   try {
-    const response = await API.get('dev', `/tasks/${id}`, {})
+    const response = await API.get('amplify-testing', `/tasks/${id}`, {})
     const task = response.task
 
     return {
