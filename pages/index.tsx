@@ -12,11 +12,23 @@ const Home: NextPage = () => {
               isr動作確認ページへ
             </a>
           </Link>
-          <Link href={'/isr'}>
+          <Link href={'/tasks'}>
             <a className="text-2xl font-bold hover:underline">
               TaskListページへ（SSR）
             </a>
           </Link>
+          <a
+            href="https://github.com/tokatu4561/next-apmlify-sample-todo"
+            className="text-2xl font-bold hover:underline"
+          >
+            {'Code(front)'}
+          </a>
+          <a
+            href="https://github.com/tokatu4561/lambda-memo-api"
+            className="text-2xl font-bold hover:underline"
+          >
+            {'Code(api)'}
+          </a>
         </div>
       </main>
     </MainLayout>
