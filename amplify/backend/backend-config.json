@@ -1,13 +1,15 @@
 {
   "auth": {
-    "nextapmlifysampletoda4c0c490": {
+    "nextapmlifysampletod5c9c35fc": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
       "customAuth": false,
       "frontendAuthConfig": {
         "socialProviders": [],
-        "usernameAttributes": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
         "signupAttributes": [
           "EMAIL"
         ],
@@ -23,15 +25,6 @@
           "EMAIL"
         ]
       }
-    }
-  },
-  "function": {},
-  "api": {},
-  "hosting": {
-    "amplifyhosting": {
-      "service": "amplifyhosting",
-      "type": "cicd",
-      "lastPushTimeStamp": "2022-11-13T04:36:21.960Z"
     }
   }
 }
