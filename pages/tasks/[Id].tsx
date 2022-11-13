@@ -86,7 +86,7 @@ export const getStaticProps: GetStaticProps<
       props: {
         task: task,
       },
-      revalidate: 5,
+      revalidate: 60,
     }
   } catch (err) {
     console.log(err)
