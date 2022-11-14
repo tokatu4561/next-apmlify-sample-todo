@@ -84,9 +84,10 @@ export const getStaticProps: GetStaticProps<
     // const task = response.task
 
     // console.log('get task', task)
-    const task = await fetchJson(
+    const res = await fetchJson(
       `https://qmqg5g1eq6.execute-api.ap-northeast-1.amazonaws.com/Prod/tasks/${id}`
     )
+    const task = res.task
 
     return {
       props: {
