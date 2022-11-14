@@ -7,6 +7,7 @@ import { Button } from '../../src/components/Button'
 import { TrashIcon } from '@heroicons/react/solid'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { fetchJson } from '../../src/lib/utils'
 
 interface TaskPageParams extends ParsedUrlQuery {
   id: string
@@ -79,10 +80,13 @@ export const getStaticProps: GetStaticProps<
   const id = context.params?.Id
 
   try {
-    const response = await API.get('amplify-testing', `/tasks/${id}`, {})
-    const task = response.task
+    // const response = await API.get('amplify-testing', `/tasks/${id}`, {})
+    // const task = response.task
 
-    console.log('get task', task)
+    // console.log('get task', task)
+    const task = await fetchJson(
+      `https://qmqg5g1eq6.execute-api.ap-northeast-1.amazonaws.com/Prod/tasks/${id}`
+    )
 
     return {
       props: {
